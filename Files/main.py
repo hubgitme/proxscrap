@@ -214,15 +214,7 @@ def update_readme(proxy_list, filename=DEFAULT_README_PATH):
 
         readme_content = f"""# 📊 نتایج استخراج: (آخرین بروزرسانی: {update_time_iran})
 
-<p align="center">
-  <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License" />
-  <img src="https://img.shields.io/badge/python-3.9-blue" alt="Python 3.11" />
-  <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions Welcome" />
-  <img src="https://img.shields.io/badge/Proxy%20Scraper-Running-green" alt="Proxy Scraper" />
-  <img src="https://github.com/Argh94/telegram-proxy-scraper/actions/workflows/main.yml/badge.svg" alt="Proxy Scraper Workflow" />
-  <img src="https://img.shields.io/github/last-commit/Argh94/telegram-proxy-scraper" alt="GitHub Last Commit" />
-  <img src="https://img.shields.io/github/issues/Argh94/telegram-proxy-scraper" alt="GitHub Issues" />
-</p>
+
 
 این پروژه یک اسکریپت پایتون برای جمع‌آوری خودکار پروکسی‌های MTProto تلگرام از منابع متنی و کانال‌های تلگرام است. پروکسی‌ها در فایل `proxy.txt` ذخیره می‌شوند و هر 3 ساعت به‌صورت خودکار به‌روزرسانی می‌شوند.
 
@@ -266,28 +258,6 @@ def update_readme(proxy_list, filename=DEFAULT_README_PATH):
 
 > **💡 نکته**: این جدول فقط نمونه‌ای از پروکسی‌هاست. برای دسترسی به لیست کامل و به‌روز، فایل [proxy.txt](proxy.txt) را دانلود کنید.
 
-## 🤝 مشارکت
-از ایده‌ها و مشارکت شما استقبال می‌کنیم! برای بهبود پروژه:
-1. یک **Issue** در مخزن باز کنید.
-2. یا یک **Pull Request** با تغییرات پیشنهادی ارسال کنید.
-
-## 📜 لایسنس
-این پروژه تحت [لایسنس MIT](https://github.com/Argh94/telegram-proxy-scraper/blob/main/Files/LISENSE) منتشر شده است.
-
-## 🔗 لینک‌های مفید
-- 📄 [لیست پروکسی‌ها](proxy.txt)
-- 🚀 [وضعیت GitHub Actions](https://github.com/Argh94/telegram-proxy-scraper/actions)
-- ⭐ [ما را ستاره دهید!](https://github.com/Argh94/telegram-proxy-scraper)
-
-## 📊 Stargazers در گذر زمان
-<p align="center">
-  <img src="https://starchart.cc/Argh94/telegram-proxy-scraper.svg?variant=adaptive" alt="Stargazers over time" />
-</p>
-
----
-
-🌟 **سپاس از استفاده از Telegram Proxy Scraper!** اگر سؤالی دارید، در بخش Issues مطرح کنید.
-"""
 
         with open(filename, 'w', encoding='utf-8') as file:
             file.write(readme_content)
@@ -304,6 +274,7 @@ if __name__ == "__main__":
     ]
     
     telegram_urls = [
+        "https://t.me/webproxy",
         "https://t.me/s/iporoto",
         "https://t.me/s/HiProxy",
         "https://t.me/s/iproxy",
