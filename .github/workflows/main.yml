@@ -2,49 +2,51 @@ name: Telegram Proxy Scraper
 
 on:
   schedule:
-    - cron: '0 */3 * * *'  
-  push:
-    branches: [ main ]
-  workflow_dispatch:
+    - cron: '0 */3 * * *'   # هر ۳ ساعت (به وقت UTC)
+  workflow_dispatch:         # اجرای دستی از تب Actions
+
+# بدون این بخش، push کردن نتیجه در مخزن‌های جدید/فورک‌شده با خطا مواجه می‌شود
+permissions:
+  contents: write
+
+concurrency:
+  group: proxy-scraper
+  cancel-in-progress: false
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 5 
+    timeout-minutes: 15
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v5
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v6
-      with:
-        python-version: '3.11'
-        cache: 'pip' 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: Files/requirements.txt
 
-    - name: Create or update requirements.txt
-      working-directory: ./Files
-      run: |
-        echo -e "requests\nbeautifulsoup4\npytz\njdatetime" > requirements.txt
-        cat requirements.txt
+      - name: Install dependencies
+        working-directory: ./Files
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-    - name: Install dependencies
-      working-directory: ./Files
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+      - name: Run scraper
+        working-directory: ./Files
+        run: python main.py
 
-    - name: Run scraper
-      working-directory: ./Files
-      run: python main.py  
-
-    - name: Commit and push changes
-      run: |
-        git config --global user.name 'GitHub Action'
-        git config --global user.email 'action@github.com'
-        git checkout main
-        git add proxy.txt README.md Files/requirements.txt
-        git diff --quiet && git diff --staged --quiet || git commit -m "⛓️‍💥 Argh94 Update"
-        git push || echo "No changes to push"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit and push changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add proxy.txt README.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update proxies"
+            git push
+          fi
