@@ -12,6 +12,9 @@ import socket
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import json
 import os
+import sys
+import html
+from urllib.parse import urlparse, parse_qs
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -28,152 +31,176 @@ USER_AGENTS = [
 def get_random_user_agent():
     return random.choice(USER_AGENTS)
 
+TEXT_URLS = [
+    "https://raw.githubusercontent.com/MhdiTaheri/ProxyCollector/main/proxy.txt",
+    "https://raw.githubusercontent.com/SoliSpirit/mtproto/master/all_proxies.txt",
+    "https://itsyebekhe.github.io/MTProtoNexus/extracted_proxies.json",
+    "https://raw.githubusercontent.com/darkvibez456/mtproto-proxy-auto/refs/heads/main/proxies.txt",
+]
+
+TELEGRAM_URLS = [
+    "https://t.me/s/webproxy",
+    "https://t.me/s/iporoto",
+    "https://t.me/s/HiProxy",
+    "https://t.me/s/iproxy",
+    "https://t.me/s/iRoProxy",
+    "https://t.me/s/proxyforopeta",
+    "https://t.me/s/IRN_Proxy",
+    "https://t.me/s/MProxy_ir",
+    "https://t.me/s/ProxyHagh",
+    "https://t.me/s/PyroProxy",
+    "https://t.me/s/ProxyMTProto",
+    "https://t.me/s/MTPro_XYZ",
+    "https://t.me/s/vpns",
+    "https://t.me/s/mtmvpn",
+    "https://t.me/s/asr_proxy",
+    "https://t.me/s/proxyskyy",
+]
+
+LINK_RE = re.compile(r"(?:tg://proxy|https?://t\.me/proxy)\?[^\s<>\"'`|)]+")
+HEX_RE = re.compile(r"^[0-9a-fA-F]+$")
+CHECK_WORKERS = 100
+CHECK_TIMEOUT = 3
+
+
 def clean_line(line):
     line = line.strip().replace('\r', '').replace('\n', '')
     line = ''.join(c for c in line if unicodedata.category(c)[0] != 'C')
     return line
 
-def check_proxy_status(server, port, timeout=3):  
-    """Check if a proxy server is online by attempting a connection."""
+
+def parse_proxy_link(link):
+    """Parse a proxy link (any parameter order, tg:// or t.me) -> (server, port, secret) or None."""
+    link = html.unescape(clean_line(link))
+    if not link.startswith(('tg://proxy', 'https://t.me/proxy', 'http://t.me/proxy')):
+        return None
     try:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(timeout)
-        result = sock.connect_ex((server, int(port)))
-        sock.close()
-        if result == 0:
-            logging.info(f"Proxy {server}:{port} is online")
+        # keep '+' characters of base64 secrets (parse_qs would turn them into spaces)
+        query = parse_qs(urlparse(link).query.replace('+', '%2B'))
+        server = query['server'][0].strip().rstrip('.')
+        port = int(query['port'][0])
+        secret = query['secret'][0].strip()
+    except (KeyError, IndexError, ValueError):
+        return None
+    if not (0 < port < 65536):
+        return None
+    # allow only safe characters (the values end up in README markdown and web pages)
+    if not re.fullmatch(r'[A-Za-z0-9._-]+', server):
+        return None
+    if not re.fullmatch(r'[A-Za-z0-9_\-+/=]+', secret):
+        return None
+    return server, port, secret
+
+
+def make_link(server, port, secret):
+    return f"https://t.me/proxy?server={server}&port={port}&secret={secret}"
+
+
+def check_proxy_status(server, port, timeout=CHECK_TIMEOUT):
+    """Return True if a TCP connection to the proxy can be opened."""
+    try:
+        with socket.create_connection((server, int(port)), timeout=timeout):
             return True
-        else:
-            logging.warning(f"Proxy {server}:{port} is offline or unreachable")
-            return False
-    except (socket.timeout, socket.gaierror, ConnectionRefusedError) as e:
-        logging.error(f"Error checking proxy {server}:{port}: {e}")
+    except (OSError, UnicodeError, ValueError):
         return False
 
-def fetch_proxies_from_text_urls(urls):
-    all_links = []
-    headers = {'User-Agent': get_random_user_agent()}
-    pattern = r'^(?:tg://proxy|https://t\.me/proxy)\?server=([^&]+)&port=(\d+)&secret=.+$'
-    
+
+def fetch_candidates_from_text_urls(urls):
+    """Download proxy lists (text or JSON). Returns unchecked (server, port, secret) tuples."""
+    candidates = []
     for url in urls:
+        found = []
         try:
             logging.info(f"Fetching proxies from {url}")
-            response = requests.get(url, headers=headers, timeout=10)
+            response = requests.get(url, headers={'User-Agent': get_random_user_agent()}, timeout=15)
             response.raise_for_status()
-            
+
             if url.endswith('.json'):
                 try:
                     data = response.json()
-                    proxy_checks = []
-                    for item in data:
-                        server = item.get('host')
-                        port = item.get('port')
-                        secret = item.get('secret')
-                        if server and port and secret:
-                            proxy_link = f"tg://proxy?server={server}&port={port}&secret={secret}"
-                            proxy_checks.append((proxy_link, server, port))
-                        else:
-                            logging.debug(f"Skipping invalid JSON proxy entry: {item}")
-                    
-                    with ThreadPoolExecutor(max_workers=30) as executor:
-                        future_to_proxy = {executor.submit(check_proxy_status, server, port): proxy for proxy, server, port in proxy_checks}
-                        for future in as_completed(future_to_proxy):
-                            proxy = future_to_proxy[future]
-                            try:
-                                if future.result():
-                                    all_links.append(proxy)
-                                    logging.info(f"Valid and online proxy from JSON: {proxy}")
-                                else:
-                                    logging.warning(f"Skipping offline proxy from JSON: {proxy}")
-                            except Exception as e:
-                                logging.error(f"Error checking proxy {proxy}: {e}")
-                
-                except json.JSONDecodeError as e:
+                except ValueError as e:
                     logging.error(f"Invalid JSON format in {url}: {e}")
-            else:
-                lines = response.text.splitlines()
-                proxy_checks = []
-                
-                for line in lines:
-                    line = clean_line(line)
-                    if not line:
+                    continue
+                if isinstance(data, dict):
+                    data = next((v for v in data.values() if isinstance(v, list)), [])
+                for item in data if isinstance(data, list) else []:
+                    if not isinstance(item, dict):
                         continue
-                    match = re.match(pattern, line)
-                    if match:
-                        server, port = match.groups()
-                        proxy_checks.append((line, server, port))
-                    else:
-                        logging.debug(f"Invalid or skipped proxy: {line} (does not match pattern)")
-                
-                with ThreadPoolExecutor(max_workers=30) as executor:
-                    future_to_proxy = {executor.submit(check_proxy_status, server, port): line for line, server, port in proxy_checks}
-                    for future in as_completed(future_to_proxy):
-                        line = future_to_proxy[future]
-                        try:
-                            if future.result():
-                                all_links.append(line)
-                                logging.info(f"Valid and online proxy found: {line}")
-                            else:
-                                logging.warning(f"Skipping offline proxy: {line}")
-                        except Exception as e:
-                            logging.error(f"Error checking proxy {line}: {e}")
-            
-            logging.info(f"Fetched {len(all_links)} valid and online MTProto proxies from {url}")
+                    server = item.get('host') or item.get('server') or item.get('ip')
+                    port, secret = item.get('port'), item.get('secret')
+                    if server and port and secret:
+                        parsed = parse_proxy_link(f"tg://proxy?server={server}&port={port}&secret={secret}")
+                        if parsed:
+                            found.append(parsed)
+            else:
+                for line in response.text.splitlines():
+                    for link in LINK_RE.findall(html.unescape(line)):
+                        parsed = parse_proxy_link(link)
+                        if parsed:
+                            found.append(parsed)
+            logging.info(f"Found {len(found)} proxy links in {url}")
         except requests.RequestException as e:
             logging.error(f"HTTP error fetching {url}: {e}")
+        candidates.extend(found)
         time.sleep(random.uniform(0.5, 1.0))
-    return all_links
+    return candidates
 
-def fetch_proxies_from_telegram_channel(url):
-    proxies = []
-    headers = {'User-Agent': get_random_user_agent()}
-    
+
+def fetch_candidates_from_telegram_channel(url):
+    """Read a public channel preview page (t.me/s/...). Returns unchecked tuples."""
+    found = []
     try:
         logging.info(f"Opening {url} with HTTP Request")
-        response = requests.get(url, headers=headers, timeout=10)
+        response = requests.get(url, headers={'User-Agent': get_random_user_agent()}, timeout=15)
         response.raise_for_status()
-        
-        page_source = response.text
-        if "CAPTCHA" in page_source or "recaptcha" in page_source.lower():
+        if "recaptcha" in response.text.lower():
             logging.warning(f"CAPTCHA detected on {url}")
-        
-        soup = BeautifulSoup(page_source, 'html.parser')
-        pattern = r'^(tg://proxy|https://t\.me/proxy)\?server=[^&]+&port=\d+(&secret=.+)$'
-        proxy_elements = soup.find_all('a', href=re.compile(pattern))
-        
-        proxy_checks = []
-        for element in proxy_elements:
-            proxy = element.get('href')
-            match = re.match(r'^(?:tg://proxy|https://t\.me/proxy)\?server=([^&]+)&port=(\d+)&secret=.+$', proxy)
-            if match:
-                server, port = match.groups()
-                proxy_checks.append((proxy, server, port))
-        
-        with ThreadPoolExecutor(max_workers=30) as executor:  
-            future_to_proxy = {executor.submit(check_proxy_status, server, port): proxy for proxy, server, port in proxy_checks}
-            for future in as_completed(future_to_proxy):
-                proxy = future_to_proxy[future]
-                try:
-                    if future.result():
-                        proxies.append(proxy)
-                        logging.info(f"Valid and online proxy found from Telegram: {proxy}")
-                    else:
-                        logging.warning(f"Skipping offline proxy from Telegram: {proxy}")
-                except Exception as e:
-                    logging.error(f"Error checking proxy {proxy}: {e}")
-        
-        logging.info(f"Fetched {len(proxies)} valid and online MTProto proxies from {url}")
+
+        soup = BeautifulSoup(response.text, 'html.parser')
+        for element in soup.find_all('a', href=True):
+            parsed = parse_proxy_link(element['href'])
+            if parsed:
+                found.append(parsed)
+        logging.info(f"Found {len(found)} proxy links in {url}")
     except requests.RequestException as e:
         logging.error(f"HTTP error fetching {url}: {e}")
     except Exception as e:
         logging.error(f"General error fetching {url}: {e}")
+    time.sleep(random.uniform(0.5, 1.0))
+    return found
 
-    time.sleep(random.uniform(0.5, 1.0))  
-    return proxies
+
+def filter_online(candidates):
+    """Remove duplicates, test each proxy once (in parallel) and return the online links."""
+    unique = {}
+    for server, port, secret in candidates:
+        key_secret = secret.lower() if HEX_RE.match(secret) else secret
+        unique.setdefault((server.lower(), port, key_secret), (server, port, secret))
+    logging.info(f"Testing {len(unique)} unique proxies (from {len(candidates)} links)")
+
+    online = []
+    with ThreadPoolExecutor(max_workers=CHECK_WORKERS) as executor:
+        futures = {executor.submit(check_proxy_status, s, p): (s, p, sec) for s, p, sec in unique.values()}
+        for future in as_completed(futures):
+            try:
+                if future.result():
+                    online.append(make_link(*futures[future]))
+            except Exception as e:
+                logging.error(f"Error checking proxy {futures[future]}: {e}")
+    logging.info(f"{len(online)} of {len(unique)} proxies are online")
+    return online
+
+
+def source_label(url):
+    parts = urlparse(url)
+    if parts.netloc == 'raw.githubusercontent.com':
+        return '/'.join(parts.path.strip('/').split('/')[:2])
+    return parts.netloc + parts.path
+
 
 def save_proxies_to_file(proxy_list, filename=DEFAULT_PROXY_PATH):
     try:
-        unique_proxies = list(set(proxy_list))
+        unique_proxies = sorted(set(proxy_list))
         with open(filename, 'w', encoding='utf-8') as file:
             for proxy in unique_proxies:
                 file.write(proxy + '\n')
@@ -197,20 +224,19 @@ def update_readme(proxy_list, filename=DEFAULT_README_PATH):
         table_rows = ""
         valid_proxies = 0
         for i, proxy in enumerate(sample_proxies, 1):
-            proxy = proxy.strip()
-            proxy = proxy.replace('tg://proxy', 'https://t.me/proxy')
-            
-            match = re.match(r'^https://t\.me/proxy\?server=([^&]+)&port=(\d+)&secret=([0-9a-fA-F]+)(?:[0-9a-fA-F]*\..*)?$', proxy)
-            if match:
-                server, port, secret = match.groups()
-                display_proxy = f"https://t.me/proxy?server={server}&port={port}&secret={secret}"
+            parsed = parse_proxy_link(proxy)
+            if parsed:
+                server, port, secret = parsed
+                display_proxy = make_link(server, port, secret)
                 table_rows += f"| {i} | `{server}` | `{port}` | ✅ فعال | [لینک پروکسی]({display_proxy}) |\n"
                 valid_proxies += 1
-                logging.info(f"Valid proxy added to table: {proxy} (displayed as link to {display_proxy})")
             else:
                 logging.warning(f"Invalid proxy format, skipped: {proxy}")
-        
+
         logging.info(f"Added {valid_proxies} valid proxies to the table (out of {len(sample_proxies)} sampled)")
+
+        text_sources_md = "\n".join(f"  - [{source_label(u)}]({u})" for u in TEXT_URLS)
+        channels_md = ", ".join(u.rstrip('/').split('/')[-1] for u in TELEGRAM_URLS)
 
         readme_content = f"""# 📊 نتایج استخراج: (آخرین بروزرسانی: {update_time_iran})
 
@@ -230,7 +256,7 @@ def update_readme(proxy_list, filename=DEFAULT_README_PATH):
 - 📱 مناسب برای کاربران در جستجوی پروکسی‌های فعال MTProto
 
 ## 📋 پیش‌نیازها
-- 🐍 پایتون 3.9
+- 🐍 پایتون 3.11
 - 📦 کتابخانه‌های مورد نیاز: `requests`, `beautifulsoup4`, `pytz`, `jdatetime`
 - نصب وابستگی‌ها با: `pip install -r requirements.txt`
 
@@ -242,12 +268,9 @@ def update_readme(proxy_list, filename=DEFAULT_README_PATH):
 
 ## 🌍 منابع پروکسی
 - **منابع متنی**:
-  - [MahsaNetConfigTopic](https://raw.githubusercontent.com/MahsaNetConfigTopic/proxy/main/proxies.txt)
-  - [MhdiTaheri](https://raw.githubusercontent.com/MhdiTaheri/ProxyCollector/main/proxy.txt)
-  - [SoliSpirit/mtproto](https://raw.githubusercontent.com/SoliSpirit/mtproto/master/all_proxies.txt)
-  - [hookzof/socks5_list](https://raw.githubusercontent.com/hookzof/socks5_list/master/tg/mtproto.json)
+{text_sources_md}
 - **کانال‌های تلگرام**:
-  - iporoto, HiProxy, iproxy, iRoProxy, proxyforopeta, IRN_Proxy, MProxy_ir, ProxyHagh, PyroProxy, ProxyMTProto, MTPro_XYZ, vpns, mtmvpn, asr_proxy, proxyskyy
+  - {channels_md}
 
 ## 📈 نمونه پروکسی‌ها
 جدول زیر نمونه‌ای از 20 پروکسی فعال از فایل `proxy.txt` را نمایش می‌دهد. برای استفاده، روی لینک پروکسی کلیک کنید یا آن را کپی کنید:
@@ -266,41 +289,17 @@ def update_readme(proxy_list, filename=DEFAULT_README_PATH):
         logging.error(f"Error updating README.md: {e}")
 
 if __name__ == "__main__":
-    text_urls = [
-        "https://raw.githubusercontent.com/MhdiTaheri/ProxyCollector/main/proxy.txt",
-        "https://raw.githubusercontent.com/SoliSpirit/mtproto/master/all_proxies.txt",
-        "https://itsyebekhe.github.io/MTProtoNexus/extracted_proxies.json",
-        "https://raw.githubusercontent.com/darkvibez456/mtproto-proxy-auto/refs/heads/main/proxies.txt" 
-    ]
-    
-    telegram_urls = [
-        "https://t.me/webproxy",
-        "https://t.me/s/iporoto",
-        "https://t.me/s/HiProxy",
-        "https://t.me/s/iproxy",
-        "https://t.me/s/iRoProxy",
-        "https://t.me/s/proxyforopeta",
-        "https://t.me/s/IRN_Proxy",
-        "https://t.me/s/MProxy_ir",
-        "https://t.me/s/ProxyHagh",
-        "https://t.me/s/PyroProxy",
-        "https://t.me/s/ProxyMTProto",
-        "https://t.me/s/MTPro_XYZ",
-        "https://t.me/s/vpns",
-        "https://t.me/s/mtmvpn",
-        "https://t.me/s/asr_proxy",
-        "https://t.me/s/proxyskyy"
-    ]
-    
-    text_proxies = fetch_proxies_from_text_urls(text_urls)
-    
-    telegram_proxies = []
-    for url in telegram_urls:
-        proxies = fetch_proxies_from_telegram_channel(url)
-        telegram_proxies.extend(proxies)
-    
-    all_proxies = list(set(text_proxies + telegram_proxies))
-    
-    all_proxies = save_proxies_to_file(all_proxies)
-    
+    candidates = fetch_candidates_from_text_urls(TEXT_URLS)
+    for channel_url in TELEGRAM_URLS:
+        candidates.extend(fetch_candidates_from_telegram_channel(channel_url))
+    logging.info(f"Collected {len(candidates)} proxy links in total")
+
+    online_proxies = filter_online(candidates)
+
+    if not online_proxies:
+        # never overwrite the previous good list with an empty one (e.g. network outage)
+        logging.error("No online proxies found - keeping the existing proxy.txt and README.md")
+        sys.exit(1)
+
+    all_proxies = save_proxies_to_file(online_proxies)
     update_readme(all_proxies)
