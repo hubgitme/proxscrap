@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: proxy-scraper
+  cancel-in-progress: false
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
@@ -20,6 +24,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: Files/requirements.txt
 
       - name: Install dependencies
         working-directory: ./Files
@@ -40,5 +46,6 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Update proxies"
+            git pull --rebase
             git push
           fi
