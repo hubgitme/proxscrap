@@ -257,7 +257,7 @@ def update_readme(proxy_list, filename=DEFAULT_README_PATH):
 {table_rows}
 
 > **💡 نکته**: این جدول فقط نمونه‌ای از پروکسی‌هاست. برای دسترسی به لیست کامل و به‌روز، فایل [proxy.txt](proxy.txt) را دانلود کنید.
-
+"""
 
         with open(filename, 'w', encoding='utf-8') as file:
             file.write(readme_content)
