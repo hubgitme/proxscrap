@@ -246,7 +246,6 @@ https://t.me/proxy?server=khare-gol.golabkashan.info&port=8443&secret=1603010200
 https://t.me/proxy?server=khobi-alhamdolelah.ebimarh.info&port=8443&secret=1603010200010001fc030386e24c3add
 https://t.me/proxy?server=khosh-khande.lolauth.info&port=8443&secret=1603010200010001fc030386e24c3add
 https://t.me/proxy?server=khune.ir.bcsadwtgd.info&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ
-https://t.me/proxy?server=kvas.kemerovo.online&port=8443&secret=ee888877776666555544443333222211117474322e6d79726b612e6469676974616c
 https://t.me/proxy?server=lelo74.kelpmoor.xyz&port=443&secret=eee38448c7e07ec8d42dfb2ca4d668b79062726f777365722e79616e6465782e7275
 https://t.me/proxy?server=leomessi.goooalir.co.uk&port=8443&secret=dd104462821249bd7ac519130220c25d09
 https://t.me/proxy?server=light.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c946c696768742e7061706572746561706f742e636f6d
