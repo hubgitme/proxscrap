@@ -214,9 +214,9 @@ def build_message(top, now_utc):
     buttons = []
     for i, (latency, server, port, secret) in enumerate(top, 1):
         link = make_link(server, port, secret)
-        # Address inside the text is a hyperlink too (same link as the button)
+        # In-text hyperlink with a text label (no raw IP shown), same link as the button
         lines.append(
-            f'{i}️⃣ <a href="{html.escape(link, quote=True)}">{html.escape(server)}:{port}</a>'
+            f'{i}️⃣ <a href="{html.escape(link, quote=True)}">اتصال به آدرس {i}</a>'
             f" — ⚡ {latency}ms"
         )
         buttons.append(
@@ -224,7 +224,7 @@ def build_message(top, now_utc):
         )
     lines.append("")
     lines.append("━━━━━━━━━━━━━━")
-    lines.append("👇 برای اتصال روی آدرس‌ها یا دکمه‌ها بزنید")
+    lines.append("👇 برای اتصال روی لینک‌ها یا دکمه‌ها بزنید")
     if CHANNEL_FOOTER:
         lines.append(f"📢 {html.escape(CHANNEL_FOOTER)}")
     return "\n".join(lines), {"inline_keyboard": buttons}
