@@ -207,19 +207,26 @@ def build_message(top, now_utc):
     """Build (text, reply_markup) for one channel post with connect buttons."""
     lines = [
         "🔥 <b>۴ پروکسی برتر این ساعت</b>",
-        f"⏰ {html.escape(tehran_now_str(now_utc))}",
+        "━━━━━━━━━━━━━━",
+        f"⏰ <i>{html.escape(tehran_now_str(now_utc))}</i>",
         "",
     ]
     buttons = []
     for i, (latency, server, port, secret) in enumerate(top, 1):
-        lines.append(f"{i}️⃣ <code>{html.escape(server)}:{port}</code> — ⚡ {latency}ms")
+        link = make_link(server, port, secret)
+        # Address inside the text is a hyperlink too (same link as the button)
+        lines.append(
+            f'{i}️⃣ <a href="{html.escape(link, quote=True)}">{html.escape(server)}:{port}</a>'
+            f" — ⚡ {latency}ms"
+        )
         buttons.append(
-            [{"text": f"🔗 اتصال به پروکسی {i} ({latency}ms)", "url": make_link(server, port, secret)}]
+            [{"text": f"🔗 اتصال به پروکسی {i} ({latency}ms)", "url": link}]
         )
     lines.append("")
-    lines.append("👇 برای اتصال روی دکمه‌ها بزنید")
+    lines.append("━━━━━━━━━━━━━━")
+    lines.append("👇 برای اتصال روی آدرس‌ها یا دکمه‌ها بزنید")
     if CHANNEL_FOOTER:
-        lines.append(html.escape(CHANNEL_FOOTER))
+        lines.append(f"📢 {html.escape(CHANNEL_FOOTER)}")
     return "\n".join(lines), {"inline_keyboard": buttons}
 
 
