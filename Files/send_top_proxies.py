@@ -206,7 +206,7 @@ def tehran_now_str(now_utc):
 def build_message(top, now_utc):
     """Build (text, reply_markup) for one channel post with connect buttons."""
     lines = [
-        "🔥 <b>۴ پروکسی برتر این ساعت</b>",
+        "🔥 <b>۴ پروکسی برتر</b>",
         "━━━━━━━━━━━━━━",
         f"⏰ <i>{html.escape(tehran_now_str(now_utc))}</i>",
         "",
