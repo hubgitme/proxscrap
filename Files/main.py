@@ -55,7 +55,7 @@ TELEGRAM_URLS = [
     "https://t.me/s/mtmvpn",
     "https://t.me/s/asr_proxy",
     "https://t.me/s/proxyskyy",
-     "https://t.me/MFDL000",
+     "https://t.me/s/MFDL000",
 ]
 
 LINK_RE = re.compile(r"(?:tg://proxy|https?://t\.me/proxy)\?[^\s<>\"'`|)]+")
