@@ -43,7 +43,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DEFAULT_PROXY_PATH = os.path.normpath(os.path.join(BASE_DIR, "../proxy.txt"))
 DEFAULT_HISTORY_PATH = os.path.join(BASE_DIR, "last_sent.json")
 
-TOP_N = int(os.environ.get("TOP_N", "4"))
+TOP_N = int(os.environ.get("TOP_N", "5"))
 EXCLUDE_HOURS = float(os.environ.get("EXCLUDE_HOURS", "6"))
 CHECK_TIMEOUT = float(os.environ.get("CHECK_TIMEOUT", "3"))
 CHECK_WORKERS = int(os.environ.get("CHECK_WORKERS", "50"))
