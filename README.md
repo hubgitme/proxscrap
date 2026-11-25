@@ -1,4 +1,4 @@
-# 📊 نتایج استخراج: (آخرین بروزرسانی: 21:02 04-09-1405)
+# 📊 نتایج استخراج: (آخرین بروزرسانی: 03:01 05-09-1405)
 
 
 
@@ -40,26 +40,26 @@
 
 | # | سرور (Server) | پورت (Port) | وضعیت | لینک پروکسی |
 |---|---------------|-------------|-------|-------------|
-| 1 | `do.ionox.co.uk` | `8880` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=do.ionox.co.uk&port=8880&secret=79e344818749bd7ac519130220c25d09) |
-| 2 | `this-is.fastnet-vpn.xyz` | `4443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=this-is.fastnet-vpn.xyz&port=4443&secret=ee466f3ef394f7c682a47b604deda898ea746869732d69732e666173746e65742d76706e2e78797a) |
-| 3 | `hdoox.ir.ir.ir.meli-n12.info` | `8443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=hdoox.ir.ir.ir.meli-n12.info&port=8443&secret=dd104462821249bd7ac519130220c25d09) |
-| 4 | `ram7.co.uk` | `4455` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=ram7.co.uk&port=4455&secret=dd104462821249bd7ac519130220c25d09) |
-| 5 | `pnj.ionox.co.uk` | `8880` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=pnj.ionox.co.uk&port=8880&secret=79e344818749bd7ac519130220c25d09) |
-| 6 | `83.243.86.210` | `7443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=83.243.86.210&port=7443&secret=eeNEgYdJvXrFGRMCIMJdCQ) |
-| 7 | `3etare.co.uk` | `8443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=3etare.co.uk&port=8443&secret=79e344818749bd7ac519130220c25d09) |
-| 8 | `ccc.horizon555.co.uk` | `8443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=ccc.horizon555.co.uk&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ) |
-| 9 | `telegram.telbet.app` | `8443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=telegram.telbet.app&port=8443&secret=79e344818749bd7ac519130220c25d09) |
-| 10 | `toka23.kelpmoor.xyz` | `8443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=toka23.kelpmoor.xyz&port=8443&secret=ee8a22a2efc31d03cfe33e7dc2abb809db706574726f766963682e7275) |
-| 11 | `shopify.appnormoor.info` | `443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=shopify.appnormoor.info&port=443&secret=dd27729feca8dbcd8008c3fa4f12d92793) |
-| 12 | `russia.knox-proxy.world` | `4515` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=russia.knox-proxy.world&port=4515&secret=eee9a4f23b1d768c04a8d7f39120ca5b6e626973636f7474692e79656b74616e65742e636f6d) |
-| 13 | `gishniz.shambelile.co.uk` | `8443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=gishniz.shambelile.co.uk&port=8443&secret=EERighJJvXrFGRMCIMJdCQ) |
-| 14 | `79.137.196.223` | `5443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=79.137.196.223&port=5443&secret=eeee1b84950935ebf99951bc30e394445c9b7777772e636c6f7564666c6172652e636f6d) |
-| 15 | `87.248.144.50` | `2083` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=87.248.144.50&port=2083&secret=79e344818749bd7ac519130220c25d09) |
-| 16 | `85.133.200.13` | `8880` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=85.133.200.13&port=8880&secret=eeNEgYdJvXrFGRMCIMJdCQ) |
-| 17 | `17fh.masi.ir.he6fhd.ru` | `8443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=17fh.masi.ir.he6fhd.ru&port=8443&secret=dd104462821249bd7ac519130220c25d09) |
-| 18 | `stream.lovely.lat` | `443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=stream.lovely.lat&port=443&secret=eeaadd88aa9facd454936d0c42dc128e7773747265616d2e6c6f76656c792e6c6174) |
-| 19 | `kite.heronglade.space` | `443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=kite.heronglade.space&port=443&secret=eef34d88320a4d0b6e8aaf11541681dd7c706574726f766963682e7275) |
-| 20 | `boro.poolaki.co.uk` | `8443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=boro.poolaki.co.uk&port=8443&secret=EERighJJvXrFGRMCIMJdCQ) |
+| 1 | `benze-benz.ir.osahflahyev.info` | `7443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=benze-benz.ir.osahflahyev.info&port=7443&secret=79e344818749bd7ac519130220c25d09) |
+| 2 | `noh.ionox.co.uk` | `8880` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=noh.ionox.co.uk&port=8880&secret=79e344818749bd7ac519130220c25d09) |
+| 3 | `88.99.126.37` | `8443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=88.99.126.37&port=8443&secret=dd104462821249bd7ac519130220c25d09) |
+| 4 | `88.99.211.15` | `8443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=88.99.211.15&port=8443&secret=104462821249bd7ac519130220c25d09) |
+| 5 | `maple.velvetwindow.cc` | `443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=maple.velvetwindow.cc&port=443&secret=eed09fb30e9ba945e3eb272875413c8c946d61706c652e76656c76657477696e646f772e6363) |
+| 6 | `85.133.200.47` | `8880` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=85.133.200.47&port=8880&secret=dd1603010200010001fc030386e24c3add) |
+| 7 | `soh5.goooalir.co.uk` | `8443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=soh5.goooalir.co.uk&port=8443&secret=dd104462821249bd7ac519130220c25d09) |
+| 8 | `refiq.poolaki.co.uk` | `8443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=refiq.poolaki.co.uk&port=8443&secret=EERighJJvXrFGRMCIMJdCQ) |
+| 9 | `testt.samanehha.info` | `8443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=testt.samanehha.info&port=8443&secret=79e344818749bd7ac519130220c25d09) |
+| 10 | `212.118.53.195` | `443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=212.118.53.195&port=443&secret=dd4482437e89f9af8929514eee7faaf61f) |
+| 11 | `name.namenewok.info` | `8443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=name.namenewok.info&port=8443&secret=79e344818749bd7ac519130220c25d09) |
+| 12 | `kara.petros-es.co.uk` | `1550` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=kara.petros-es.co.uk&port=1550&secret=280597c4f8738458d70e44cbb8b46e8b) |
+| 13 | `lonezo26.saltfern.xyz` | `8443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=lonezo26.saltfern.xyz&port=8443&secret=eeec569fca8169b57457c573b55bbaa8ec706574726f766963682e7275) |
+| 14 | `ving.mozitop.co.uk` | `8443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=ving.mozitop.co.uk&port=8443&secret=79e344818749bd7ac519130220c25d09) |
+| 15 | `dryamusical.ir` | `443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=dryamusical.ir&port=443&secret=79e344818749bd7ac519130220c25d09) |
+| 16 | `run.golgoli2.co.uk` | `2053` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=run.golgoli2.co.uk&port=2053&secret=eeNEgYdJvXrFGRMCIMJdCQ) |
+| 17 | `ir.mediaad.co.uk` | `8880` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=ir.mediaad.co.uk&port=8880&secret=79e344818749bd7ac519130220c25d09) |
+| 18 | `jadide.mamadali.co.uk` | `4455` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=jadide.mamadali.co.uk&port=4455&secret=dd104462821249bd7ac519130220c25d09) |
+| 19 | `viny19.kelpmoor.xyz` | `443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=viny19.kelpmoor.xyz&port=443&secret=ee71184e2ac505ed5840dd5a00da3318f36f7a6f6e2e7275) |
+| 20 | `ir-ir.grumpyoldmen.info` | `8443` | ✅ فعال | [لینک پروکسی](https://t.me/proxy?server=ir-ir.grumpyoldmen.info&port=8443&secret=104462821249bd7ac519130220c8dd09) |
 
 
 > **💡 نکته**: این جدول فقط نمونه‌ای از پروکسی‌هاست. برای دسترسی به لیست کامل و به‌روز، فایل [proxy.txt](proxy.txt) را دانلود کنید.
