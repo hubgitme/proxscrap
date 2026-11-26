@@ -1,21 +1,5 @@
 [
  {
-  "link": "https://t.me/proxy?server=156.229.160.116&port=5203&secret=eea09f796ed6891c5b7afb9d9019e9a350617a7572652e6d6963726f736f66742e636f6d",
-  "sent_at": "2026-11-24T17:40:12.889058+00:00"
- },
- {
-  "link": "https://t.me/proxy?server=156.229.164.62&port=5202&secret=ee6ca8e315abf7fb512ec858e61679a9e8617a7572652e6d6963726f736f66742e636f6d",
-  "sent_at": "2026-11-24T17:40:12.889058+00:00"
- },
- {
-  "link": "https://t.me/proxy?server=156.229.167.222&port=5201&secret=ee3a51554a1c8542cc36572fd59c2f63f4617a7572652e6d6963726f736f66742e636f6d",
-  "sent_at": "2026-11-24T17:40:12.889058+00:00"
- },
- {
-  "link": "https://t.me/proxy?server=91.221.190.198&port=443&secret=dd104462821249bd7ac519130220c25d09",
-  "sent_at": "2026-11-24T17:40:12.889058+00:00"
- },
- {
   "link": "https://t.me/proxy?server=87.248.144.60&port=2053&secret=eeNEgYdJvXrFGRMCIMJdCQ",
   "sent_at": "2026-11-24T18:00:52.730397+00:00"
  },
@@ -398,5 +382,21 @@
  {
   "link": "https://t.me/proxy?server=91.234.147.30&port=443&secret=00000000000000000000000000000000",
   "sent_at": "2026-11-26T10:51:15.326622+00:00"
+ },
+ {
+  "link": "https://t.me/proxy?server=209.94.60.12&port=443&secret=ee74f6feeccaba4ced3c2057328addd5b6636c6f7564666c6172652e636f6d",
+  "sent_at": "2026-11-26T12:01:00.514760+00:00"
+ },
+ {
+  "link": "https://t.me/proxy?server=172.245.219.148&port=443&secret=ee00000000000000000000000000000000636c6f7564666c6172652e636f6d",
+  "sent_at": "2026-11-26T12:01:00.514760+00:00"
+ },
+ {
+  "link": "https://t.me/proxy?server=152.44.47.172&port=443&secret=ee3db86f433b3aeb5c115185432b0ca1db636c6f7564666c6172652e636f6d",
+  "sent_at": "2026-11-26T12:01:00.514760+00:00"
+ },
+ {
+  "link": "https://t.me/proxy?server=209.151.144.196&port=443&secret=ee37d89185cc2c0d277a5506e5f18325b1636c6f7564666c6172652e636f6d",
+  "sent_at": "2026-11-26T12:01:00.514760+00:00"
  }
 ]
