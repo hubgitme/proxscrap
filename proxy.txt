@@ -152,7 +152,6 @@ https://t.me/proxy?server=aptupdate.appnormoor.info&port=443&secret=dd27729feca8
 https://t.me/proxy?server=as.mkim.click&port=443&secret=ee2dfa3526fc70b7abd7a09eade6ccea1f61732e6d6b696d2e636c69636b
 https://t.me/proxy?server=aurora.heronglade.space&port=8443&secret=eedac1697485fe37f9c1435848f8ec2ff5706574726f766963682e7275
 https://t.me/proxy?server=aurora.velvetoak.work&port=443&secret=eee418f291b6279b0f441469b2d05e5a7e6c69746536342e73697465
-https://t.me/proxy?server=ava.goooalir.co.uk&port=8443&secret=dd104462821249bd7ac519130220c25d09
 https://t.me/proxy?server=avangard.pareporeh.info&port=5500&secret=ec742282124f04d318551341ead76457
 https://t.me/proxy?server=azadi.goooalir.co.uk&port=8443&secret=dd104462821249bd7ac519130220c25d09
 https://t.me/proxy?server=baba.ir.osahflahyev.info&port=7443&secret=79e344818749bd7ac519130220c25d09
@@ -292,6 +291,7 @@ https://t.me/proxy?server=iro.varfootball2.co.uk&port=2053&secret=79e344818749bd
 https://t.me/proxy?server=iro.varfootball2.co.uk&port=2053&secret=eeNEgYdJvXrFGRMCIMJdCQ
 https://t.me/proxy?server=irogallery.golgoli1.co.uk&port=2096&secret=79e344818749bd7ac519130220c25d09
 https://t.me/proxy?server=irogallery.golgoli1.co.uk&port=2096&secret=eeNEgYdJvXrFGRMCIMJdCQ
+https://t.me/proxy?server=itech.afrawoodw.ir&port=8443&secret=EERighJJvXrFGRMCIMJdCQ==
 https://t.me/proxy?server=its.fastprx.co.uk&port=2086&secret=d2289d65c760a8245e24ffc2e3a3ba27
 https://t.me/proxy?server=j4y7nf.ir.meli-n13.info&port=8443&secret=104462821249bd7ac519130220c25d09
 https://t.me/proxy?server=j7nf.ir.meli-n13.info&port=8443&secret=104462821249bd7ac519130220c25d09
@@ -334,7 +334,6 @@ https://t.me/proxy?server=mint.paperteapot.com&port=443&secret=eed09fb30e9ba945e
 https://t.me/proxy?server=mint.velvetwindow.cc&port=443&secret=eed09fb30e9ba945e3eb272875413c8c946d696e742e76656c76657477696e646f772e6363
 https://t.me/proxy?server=mobile.prxtg.top&port=443&secret=ee8ae40a2aa7554a058f3340b6449e4e666d6f62696c652e70727874672e746f70
 https://t.me/proxy?server=mosakhar.hosiyaman.info&port=8443&secret=1603010200010001fc030386e24c3add
-https://t.me/proxy?server=my.fastprx.co.uk&port=2052&secret=aea1191522c9b281d2633610a34e730d
 https://t.me/proxy?server=my.soft98.co.uk&port=8443&secret=79e344818749bd7ac519130220c25d09
 https://t.me/proxy?server=nab.goooalir.co.uk&port=8443&secret=dd104462821249bd7ac519130220c25d09
 https://t.me/proxy?server=name.golgoli2.co.uk&port=2096&secret=79e344818749bd7ac519130220c25d09
@@ -403,6 +402,7 @@ https://t.me/proxy?server=porsorate.co.uk&port=4455&secret=dd104462821249bd7ac51
 https://t.me/proxy?server=professor.hasratepaeiz.website&port=7070&secret=88e462779949db7ec888130660c40c77
 https://t.me/proxy?server=proxtstar.live&port=443&secret=eeec15a78c3842e866c302c8526175a68c7975672d6c696e6b2e7275
 https://t.me/proxy?server=proxy.foriran.co.uk&port=8443&secret=EERighJJvXrFGRMCIMJdCQ
+https://t.me/proxy?server=proxy2.cactusop.ir&port=443&secret=ee27c54d9bf40a27666fadad81774ee84c7777772e636c6f7564666c6172652e636f6d
 https://t.me/proxy?server=pub.ultra-fast.cc&port=443&secret=eea5b4942ad633d0c7a3f72790535ab1887075622e756c7472612d666173742e6363
 https://t.me/proxy?server=puot.mozitop.co.uk&port=8443&secret=79e344818749bd7ac519130220c25d09
 https://t.me/proxy?server=quill.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c947175696c6c2e7061706572746561706f742e636f6d
@@ -484,10 +484,8 @@ https://t.me/proxy?server=telegram.telbet.app&port=8443&secret=79e344818749bd7ac
 https://t.me/proxy?server=termsnal.co.uk&port=8443&secret=79e344818749bd7ac519130220c25d09
 https://t.me/proxy?server=termsnal.co.uk&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ
 https://t.me/proxy?server=test.jamaran.co.uk&port=8443&secret=79e344818749bd7ac519130220c25d09
-https://t.me/proxy?server=test.leagan.ir&port=443&secret=ee77065a7b6d2546be167f2f4a43f0d21f746573742e6c656167616e2e6972
 https://t.me/proxy?server=test.paydayesh.ir&port=8443&secret=dd79e344818749bd7ac519130220c25d09
 https://t.me/proxy?server=test.samanehha.info&port=8443&secret=79e344818749bd7ac519130220c25d09
-https://t.me/proxy?server=testt.paydayesh.ir&port=8443&secret=dd79e344818749bd7ac519130220c25d09
 https://t.me/proxy?server=testt.samanehha.info&port=8443&secret=79e344818749bd7ac519130220c25d09
 https://t.me/proxy?server=tg.getrocket.me&port=443&secret=eef84b5bf22712eba2c12b8c0582237add74672e676574726f636b65742e6d65
 https://t.me/proxy?server=tg.proxynet.tech&port=443&secret=ee6d98b7c125f854c0ac73c588ec9f225864726976652e676f6f676c652e636f6d
