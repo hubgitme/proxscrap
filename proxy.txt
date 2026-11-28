@@ -46,7 +46,6 @@ https://t.me/proxy?server=3etare.co.uk&port=8443&secret=79e344818749bd7ac5191302
 https://t.me/proxy?server=3etare.co.uk&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ
 https://t.me/proxy?server=41.hide.7y76y.uk&port=8443&secret=dd104462821249bd7ac519130220c25d09
 https://t.me/proxy?server=43.165.180.203&port=443&secret=ee4eb8f095f3d51f6461ad723e6c39245763646e2e6a7364656c6976722e6e6574
-https://t.me/proxy?server=45.39.84.190&port=8443&secret=ee25a372f3fa2dab48de21d6ab54ab29b27777772e636c6f7564666c6172652e636f6d
 https://t.me/proxy?server=45.43.92.149&port=443&secret=dd91e22862830fa52c8ccba7309574af6b
 https://t.me/proxy?server=46.225.253.114&port=8443&secret=dd104462821249bd7ac519130220c25d09
 https://t.me/proxy?server=46.62.224.5&port=8443&secret=dd104462821249bd7ac519130220c25d09
@@ -80,7 +79,6 @@ https://t.me/proxy?server=5.222.9.46&port=8443&secret=dd104462821249bd7ac5191302
 https://t.me/proxy?server=61.new1.ramkal12.uk&port=8443&secret=dd104462821249bd7ac519130220c25d09
 https://t.me/proxy?server=64.188.65.136&port=443&secret=eec11798ab008831b474066c9e1ebf5c997777772e78352e7275
 https://t.me/proxy?server=65.109.147.39&port=443&secret=dd79e7010200010007f0030386e24c3add
-https://t.me/proxy?server=65.109.176.207&port=8443&secret=dd79e344818749bd7ac519130220c25d09
 https://t.me/proxy?server=65.109.214.109&port=8443&secret=79e344818749bd7ac519130220c25d09
 https://t.me/proxy?server=65.109.244.5&port=8443&secret=dd104462821249bd7ac519130220c25d09
 https://t.me/proxy?server=65.109.98.213&port=443&secret=3XnnAQIAAQAH8AMDhuJMOt0
@@ -319,7 +317,6 @@ https://t.me/proxy?server=ir-countdown.lewisj.co.uk&port=8443&secret=10446282124
 https://t.me/proxy?server=ir-immortals.sponsorafuture.co.uk&port=443&secret=104462821249bd7ac519130220c8dd09
 https://t.me/proxy?server=ir-ir-ir.grumpyoldmen.info&port=8443&secret=104462821249bd7ac519130220c8dd09
 https://t.me/proxy?server=ir-ir.mhanna.info&port=3443&secret=104462821249bd7ac519130220c8dd09
-https://t.me/proxy?server=ir-ir.ourmainlands.co.uk&port=443&secret=104462821249bd7ac519130220c8dd09
 https://t.me/proxy?server=ir-landofgods.fourie.co.uk&port=8443&secret=104462821249bd7ac519130220c8dd09
 https://t.me/proxy?server=ir-ourmainland.fourie.co.uk&port=8443&secret=104462821249bd7ac519130220c8dd09
 https://t.me/proxy?server=ir.closcloud.co.uk&port=8443&secret=79e344818749bd7ac519130220c25d09
@@ -448,7 +445,6 @@ https://t.me/proxy?server=proxy.foriran.co.uk&port=8443&secret=EERighJJvXrFGRMCI
 https://t.me/proxy?server=puot.mozitop.co.uk&port=8443&secret=79e344818749bd7ac519130220c25d09
 https://t.me/proxy?server=px6.safeseller.ir&port=2398&secret=dd96775fbf321a01e08c428403488d5f05
 https://t.me/proxy?server=qamginm-sp.37-100jamal.ir&port=2020&secret=00000000000000000000000000000000
-https://t.me/proxy?server=qamginm-sp.37-100jamal.ir&port=2020&secret=AAAAAAAAAAAAAAAAAAAAAA==
 https://t.me/proxy?server=quill.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c947175696c6c2e7061706572746561706f742e636f6d
 https://t.me/proxy?server=radical.pushinero.info&port=5500&secret=d88db99ee3721f0fcb40a4ff63b5cd28
 https://t.me/proxy?server=rain.paperteapot.com&port=443&secret=eed09fb30e9ba945e3eb272875413c8c947261696e2e7061706572746561706f742e636f6d
@@ -517,7 +513,6 @@ https://t.me/proxy?server=support.infinityhalo.co.uk&port=8443&secret=79e3448187
 https://t.me/proxy?server=support.infinityhalo.co.uk&port=8443&secret=eeNEgYdJvXrFGRMCIMJdCQ
 https://t.me/proxy?server=sushima.ferdosisets.info&port=8443&secret=1603010200010001fc030386e24c3add
 https://t.me/proxy?server=syntax.azadaiu.info&port=8443&secret=1603010200010001fc030386e24c3add
-https://t.me/proxy?server=tare.shambelile.co.uk&port=8443&secret=104462821249bd7ac519130220c25d09
 https://t.me/proxy?server=tassian.goooalir.co.uk&port=8443&secret=dd104462821249bd7ac519130220c25d09
 https://t.me/proxy?server=tazenafas.dingi3.co.uk&port=4455&secret=dd104462821249bd7ac519130220c25d09
 https://t.me/proxy?server=tech.gooodrat.co.uk&port=2096&secret=79e344818749bd7ac519130220c25d09
