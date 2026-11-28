@@ -1,9 +1,6 @@
 name: Telegram Top Proxies Post
 
 on:
-  schedule:
-    # Every 2 hours at minute 17 (UTC). GitHub may delay scheduled runs a few minutes.
-    - cron: '17 */2 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
